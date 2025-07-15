@@ -1,0 +1,16 @@
+@use "../../../../styles/variables.scss" as *;
+.badge-component {
+  @include flex-center();
+  max-width: 100px;
+  height: auto;
+  background-color: $background-tertiary;
+  box-shadow: $shadow-lg;
+  color: $text-primary;
+  font-size: $font-size-sm;
+  padding: 12px 24px;
+  border-radius: 48px;
+  cursor: pointer;
+}
+.badge-component:hover {
+  background-color: $background-secondary;
+}

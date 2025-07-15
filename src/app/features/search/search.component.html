@@ -1,0 +1,15 @@
+<div class="search-container">
+  <app-input-field
+    name="search"
+    class="search-input"
+    type="search"
+    placeholder="Search songs, artists..."
+    leftIcon="loupe-search-svgrepo-com"
+    (inputChange)="onSearchChange($event)"
+  >
+  </app-input-field>
+  <app-search-results
+    [isLoading]="isLoading"
+    [searchResults]="searchResults?.items || []"
+  />
+</div>

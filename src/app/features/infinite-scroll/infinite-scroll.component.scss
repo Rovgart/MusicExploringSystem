@@ -1,0 +1,43 @@
+@use "../../styles/variables.scss" as *;
+.badges-container {
+  @include flex-center();
+  padding: 12px 12px;
+  gap: 24px;
+}
+
+.infinite-anchor {
+  height: 1px;
+  scroll-margin-top: 100px;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.cards-grid {
+  padding: 12px 48px;
+  overflow-y: scroll;
+  max-height: 883px;
+  box-shadow: $shadow-glow;
+  border-radius: 48px;
+  @include grid-cols-repeat(1);
+}
+@media (min-width: $sm) {
+  .cards-grid {
+    @include grid-cols-repeat(1);
+  }
+}
+@media (min-width: $md) {
+  .cards-grid {
+    @include grid-cols-repeat(2);
+  }
+}
+
+@media (min-width: $lg) {
+  .cards-grid {
+    @include grid-cols-repeat(3);
+  }
+}
+@media (min-width: $lg) {
+  .cards-grid {
+    @include grid-cols-repeat(4);
+  }
+}

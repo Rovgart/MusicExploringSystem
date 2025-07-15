@@ -1,0 +1,16 @@
+@switch (status) { @case ("loading") {
+<div class="pagination-loading">
+  <!-- Show skeleton or spinner while loading -->
+  <app-pagination-skeleton />
+</div>
+} @case ("success") {
+<div class="pagination-container">
+  @for (pageNumber of getPageNumbers(); track pageNumber) {
+  <app-pagination-item [page]="pageNumber" />
+  }
+</div>
+} @case ("error") {
+<div class="pagination-error">
+  <p>Failed to load pagination</p>
+</div>
+} }

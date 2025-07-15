@@ -1,0 +1,68 @@
+@use "../../../styles/variables.scss" as *;
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid $glass-dark;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &.focused {
+    border-color: $info-100;
+    box-shadow: $shadow-lg;
+  }
+
+  &.has-error {
+    border-color: $error;
+
+    &.focused {
+      border-color: $error-300;
+      box-shadow: $shadow-md;
+    }
+  }
+}
+
+.input-field {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: $font-size-lg;
+  color: $text-primary;
+
+  &::placeholder {
+    color: $info-800;
+  }
+
+  &:disabled {
+    color: $text-disabled;
+    cursor: not-allowed;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.75rem;
+  color: #6b7280;
+
+  &.left {
+    order: -1;
+  }
+
+  &.right {
+    order: 1;
+  }
+}
+
+.error-message {
+  margin-top: 0.25rem;
+  font-size: $font-family-base;
+  color: $error;
+}

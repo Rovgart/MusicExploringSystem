@@ -1,0 +1,9 @@
+<div (click)="navigateTo()" class="search-item">
+  <picture class="search-item-img-container">
+    <img class="search-item-img" src="{{ searchedItem.img }}" alt="" />
+  </picture>
+  <div class="search-item-description">
+    <h2 class="search-item-title">{{ searchedItem.artist }}</h2>
+    <span class="searched-item-song">{{ searchedItem.name }}</span>
+  </div>
+</div>

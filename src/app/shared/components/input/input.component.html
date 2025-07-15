@@ -1,0 +1,41 @@
+<div
+  class="input-wrapper"
+  [class.has-error]="hasError"
+  [class.focused]="isFocused"
+>
+  @if (leftIcon) {
+  <span class="icon left" [attr.aria-hidden]="true">
+    <i class="{{ leftIcon }}" [attr.aria-label]="leftIconLabel"></i>
+  </span>
+  }
+
+  <input
+    #inputElement
+    [id]="inputId"
+    [name]="name"
+    [type]="type"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [attr.aria-describedby]="hasError ? errorId : null"
+    [attr.aria-invalid]="hasError"
+    [value]="value"
+    [class]="class"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    class="input-field"
+  />
+
+  @if (rightIcon) {
+  <span class="icon right" [attr.aria-hidden]="true">
+    <i class="{{ rightIcon }}" [attr.aria-label]="rightIconLabel"></i>
+  </span>
+  }
+</div>
+
+@if (hasError) {
+<div [id]="errorId" class="error-message" role="alert" aria-live="polite">
+  {{ errorMessage }}
+</div>
+}

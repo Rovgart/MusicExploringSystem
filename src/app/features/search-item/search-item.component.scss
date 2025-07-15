@@ -1,0 +1,33 @@
+@use "../../styles/variables.scss" as *;
+
+.search-item {
+  @include flex-center;
+  gap: 20px;
+  background-color: $background-tertiary;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 12px;
+
+  .search-item-img-container {
+    width: 200px;
+    height: 200px;
+    box-shadow: $shadow-md;
+  }
+  .search-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .search-item-description {
+    .search-item-title {
+      font-size: $font-size-xl;
+    }
+    .search-item-name {
+      font-size: $font-size-sm;
+    }
+    width: 100%;
+  }
+}
+.search-item:hover {
+  background-color: $background-secondary;
+}

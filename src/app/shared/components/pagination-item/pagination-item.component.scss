@@ -1,0 +1,10 @@
+@use "../../../styles/variables.scss" as *;
+.pagination-item-container {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  box-shadow: $shadow-md;
+  background-color: $background-surface;
+  color: $text-secondary;
+  @include flex-center;
+}

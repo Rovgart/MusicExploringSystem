@@ -1,0 +1,33 @@
+<div class="badges-container">
+  <app-badge
+    (sortClicked)="onSortSelected($event)"
+    sortAttrib="danceability"
+    badgeText="Party bangers"
+  />
+  <app-badge
+    (sortClicked)="onSortSelected($event)"
+    sortAttrib="liveness"
+    badgeText="Let's dance"
+  />
+  <app-badge
+    (sortClicked)="onSortSelected($event)"
+    sortAttrib="energy"
+    badgeText="Mood booster"
+  />
+  <app-badge
+    (sortClicked)="onSortSelected($event)"
+    sortAttrib="energy_artist"
+    badgeText="Mood killer"
+  />
+</div>
+<div class="cards-grid">
+  @for (item of items; track trackById($index, item)) {
+  <app-card-item [item]="item"></app-card-item>
+  }
+
+  <div #infiniteScrollAnchor class="infinite-anchor"></div>
+
+  @if (loading()) {
+  <app-pagination-skeleton />
+  }
+</div>

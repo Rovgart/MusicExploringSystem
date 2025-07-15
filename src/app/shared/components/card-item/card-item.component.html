@@ -1,0 +1,18 @@
+<div class="card-item">
+  <picture class="card-preview-image-container">
+    <img
+      rou
+      class="card-preview-image"
+      [src]="item.img || 'assets/images/placeholder.jpg'"
+      [alt]="item.name || 'Song cover'"
+    />
+  </picture>
+  <div class="card-content">
+    <h4>
+      <a class="card-item-song-title" [routerLink]="['/song', item.id]">{{
+        item.name
+      }}</a>
+    </h4>
+    <h4 class="card-item-artist">{{ item.artist }}</h4>
+  </div>
+</div>

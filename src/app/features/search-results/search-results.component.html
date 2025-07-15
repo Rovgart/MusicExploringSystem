@@ -1,0 +1,10 @@
+@if (searchResults.length>=1) {
+<div class="search-results-container">
+  @for (item of searchResults; track item.id) { @if(isLoading) {
+  <div style="font-size: larger; background-color: aquamarine">Loading...</div>
+  } @else {
+
+  <app-search-item [searchedItem]="item" />
+  } }
+</div>
+}

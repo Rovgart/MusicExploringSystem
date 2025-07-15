@@ -1,0 +1,11 @@
+@use "../../styles/variables.scss" as *;
+
+:host {
+  padding: 1rem;
+  color: $text-primary;
+  font-size: $font-size-lg;
+}
+.card-list {
+  @include flex-column;
+  gap: 8px;
+}

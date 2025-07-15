@@ -1,0 +1,7 @@
+@use "../../styles/variables.scss" as *;
+.search-container {
+  position: relative;
+}
+.search-input {
+  font-size: $font-size-xl;
+}

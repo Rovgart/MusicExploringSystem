@@ -1,0 +1,84 @@
+<body>
+  <!-- Loading State -->
+  @if (isLoading()) {
+  <div
+    class="loading-container"
+    style="text-align: center; padding: 60px; color: white"
+  >
+    <div style="font-size: 18px">Loading song details...</div>
+  </div>
+  }
+
+  <!-- Error State -->
+  @if (error()) {
+  <div
+    class="error-container"
+    style="text-align: center; padding: 60px; color: #ff6b6b"
+  >
+    <div style="font-size: 18px">Error loading song: {{ error() }}</div>
+  </div>
+  }
+  <!-- Song Content -->
+  <div class="song-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="album-art-container">
+        <img
+          class="album-art"
+          src="{{song()?.img}}"
+          alt="Song Name by Artist Name"
+        />
+      </div>
+
+      <div class="song-details">
+        <h2 class="artist-name">{{song()?.artist}}</h2>
+        <h1 class="song-title">{{song()?.name}}</h1>
+      </div>
+    </section>
+
+    <!-- Progress and Controls -->
+    <section class="progress-section">
+      <div class="controls">
+        <button class="control-btn">⏮</button>
+        <button
+          (click)="togglePlay()"
+          class="control-btn"
+          style="width: 80px; height: 80px; font-size: 24px"
+        >
+          {{ isPlayed() ? '⏸' : '▶' }}
+        </button>
+        <button class="control-btn">⏭</button>
+      </div>
+    </section>
+
+    <!-- Info Grid -->
+    <section class="info-grid">
+      <div class="info-card">
+        <h3>Mood</h3>
+        <div class="mood-value">{{valenceCategory()}}</div>
+      </div>
+
+      <div class="info-card">
+        <h3>Audio Features</h3>
+        @if (!isLoading()) {
+        <app-chart [series]="series()" />
+        } @else {
+        <div class="loading-spinner">Loading chart data...</div>
+        }
+      </div>
+    </section>
+  </div>
+
+  <audio
+    #audioPlayer
+    preload="auto"
+    crossorigin="anonymous"
+    (play)="onPlay()"
+    (pause)="onPause()"
+  >
+    <source [src]="song()?.preview_url" type="audio/mpeg" />
+    <source [src]="song()?.preview_url" type="audio/ogg" />
+    <source [src]="song()?.preview_url" type="audio/wav" />
+    <source [src]="song()?.preview_url" type="audio/mp3" />
+  </audio>
+</body>

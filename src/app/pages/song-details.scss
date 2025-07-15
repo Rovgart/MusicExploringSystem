@@ -1,0 +1,362 @@
+@use "../styles/variables.scss" as *;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $background-surface;
+  font-family: $font-family-base;
+  min-height: 100vh;
+  padding: 1.25rem;
+  color: $text-primary;
+  font-size: $font-size-md;
+  line-height: $line-height-normal;
+}
+
+.loading-container {
+  @include flex-center;
+  padding: 3.75rem;
+  color: $text-secondary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+}
+
+.error-container {
+  @include flex-center;
+  padding: 3.75rem;
+  color: $error;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+}
+
+.container {
+  max-width: 75rem; // 1200px
+  margin: 0 auto;
+  background: $glass-dark;
+  backdrop-filter: blur(10px);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  box-shadow: $shadow-xl;
+  border: 1px solid $glass-accent;
+
+  @media (max-width: $md) {
+    padding: 1rem;
+  }
+}
+
+// Hero section
+.hero-section {
+  @include grid;
+  grid-template-columns: 18.75rem 1fr; // 300px 1fr
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+
+  @media (max-width: $md) {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    text-align: center;
+  }
+}
+
+.album-art-container {
+  position: relative;
+
+  .album-art {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: $shadow-glow;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: $shadow-glow, $shadow-lg;
+    }
+
+    @media (max-width: $sm) {
+      max-width: 15.625rem; // 250px
+      margin: 0 auto;
+    }
+  }
+}
+
+.song-details {
+  @include flex-column;
+  justify-content: center;
+  gap: 1rem;
+
+  .artist-name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-medium;
+    color: $text-secondary;
+    font-family: $font-family-base;
+    letter-spacing: $letter-spacing-normal;
+
+    @media (max-width: $sm) {
+      font-size: $font-size-lg;
+    }
+  }
+
+  .song-title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    line-height: $line-height-tight;
+    font-family: $font-family-heading;
+    letter-spacing: $letter-spacing-tight;
+
+    @media (max-width: $md) {
+      font-size: $font-size-2xl;
+    }
+
+    @media (max-width: $sm) {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+// Progress section
+.progress-section {
+  margin-bottom: 1.875rem;
+
+  .progress-bar {
+    width: 100%;
+    height: 0.5rem;
+    background: $player-progress-bg;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    position: relative;
+
+    .progress-fill {
+      height: 100%;
+      background: $gradient-primary;
+      border-radius: 0.25rem;
+      width: 35%;
+      transition: width 0.3s ease;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0.75rem;
+        height: 100%;
+        background: $primary;
+        border-radius: 50%;
+        transform: translateX(50%);
+      }
+    }
+  }
+}
+
+// Controls
+.controls {
+  @include flex-center;
+  gap: 1.25rem;
+
+  .control-btn {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    background: $glass-light;
+    border: none;
+    color: $text-primary;
+    font-size: $font-size-lg;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid $glass-accent;
+    @include flex-center;
+
+    &:hover {
+      background: $glass-accent;
+      transform: scale(1.1);
+      box-shadow: $shadow-glow;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    // Play button (larger)
+    &.play-btn {
+      width: 5rem;
+      height: 5rem;
+      font-size: 1.5rem;
+      background: $gradient-primary;
+
+      &:hover {
+        background: $gradient-accent;
+        box-shadow: $shadow-glow, $shadow-md;
+      }
+    }
+  }
+}
+
+// Info grid
+.info-grid {
+  @include grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.875rem;
+  justify-content: center;
+
+  @media (max-width: $md) {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.info-card {
+  background: $glass-light;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid $glass-accent;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $glass-accent;
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  h3 {
+    color: $text-primary;
+    font-size: $font-size-lg;
+    margin-bottom: 1rem;
+    font-weight: $font-weight-semibold;
+    font-family: $font-family-heading;
+    letter-spacing: $letter-spacing-normal;
+  }
+
+  @media (max-width: $sm) {
+    padding: 1.25rem;
+  }
+}
+
+// Mood card specific styles
+.mood-value {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $success;
+  text-transform: capitalize;
+  font-family: $font-family-base;
+  letter-spacing: $letter-spacing-normal;
+
+  // Different mood colors
+  &.happy {
+    color: $warning;
+  }
+  &.sad {
+    color: $info;
+  }
+  &.energetic {
+    color: $success;
+  }
+  &.calm {
+    color: $primary;
+  }
+  &.angry {
+    color: $error;
+  }
+}
+
+// Chart and visualizer placeholders
+.chart-placeholder,
+.visualizer-placeholder {
+  width: 100%;
+  height: 12.5rem;
+  background: $player-background;
+  border-radius: 0.75rem;
+  @include flex-center;
+  color: $text-tertiary;
+  font-size: $font-size-sm;
+  border: 1px solid $glass-accent;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $background-tertiary;
+    color: $text-secondary;
+  }
+}
+
+// Additional utility classes
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $background-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 4px;
+
+  &:hover {
+    background: $primary-600;
+  }
+}
+
+// Focus states for accessibility
+.control-btn:focus,
+.info-card:focus {
+  outline: 2px solid $primary;
+  outline-offset: 2px;
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .container {
+    border: 2px solid $text-primary;
+  }
+
+  .info-card {
+    border: 1px solid $text-primary;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

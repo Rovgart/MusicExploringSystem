@@ -1,0 +1,6 @@
+@if (status==="loading") {
+<app-pagination-skeleton />
+}
+<article class="songs-card-list">
+  <app-card-list [items]="musicCards.items"></app-card-list>
+</article>

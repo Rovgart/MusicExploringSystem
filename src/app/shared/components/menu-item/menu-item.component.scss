@@ -1,0 +1,12 @@
+@use "../../../styles/variables.scss" as *;
+
+.menu-item {
+  cursor: pointer;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background-color: $glass-dark;
+  box-shadow: $shadow-md;
+}
+:hover {
+  background-color: $primary-500;
+}

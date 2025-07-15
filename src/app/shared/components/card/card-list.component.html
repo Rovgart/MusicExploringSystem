@@ -1,0 +1,7 @@
+<div class="cards-grid">
+  @for (item of items; track trackById(item)) {
+  <app-card-item [item]="item"> </app-card-item>
+
+  }
+  <ng-content></ng-content>
+</div>
