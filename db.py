@@ -50,14 +50,13 @@ try:
         )
         songs_to_add.append(song)
         
-        # Commit co 1000 rekordów dla lepszej wydajności
         if len(songs_to_add) >= 1000:
             session.add_all(songs_to_add)
             session.commit()
             songs_to_add = []
             print(f"Dodano {len(songs_to_add)} piosenek...")
     
-    # Dodaj pozostałe rekordy
+
     if songs_to_add:
         session.add_all(songs_to_add)
         session.commit()
