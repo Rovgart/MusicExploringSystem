@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from models.models import Song
 from sqlalchemy.orm import Session
-from sqlalchemy import select, or_
+from sqlalchemy import  or_
 from typing import List
 class SongService:
     def __init__(self, db:Session) -> None:
